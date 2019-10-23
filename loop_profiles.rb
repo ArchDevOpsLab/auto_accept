@@ -1,6 +1,11 @@
 require "rubygems"
+require "json"
 
-# loop through lines in a file
-File.open("support/profiles.txt", "r").each_line do |profile|
-	puts profile
+# loop through items in a json file
+file = File.open "./support/profiles.json"
+profile_data = JSON.load file
+
+profile_data.each do |person, url|
+	puts "Person's name is #{person}"
+	puts "Profile URL is #{url}"
 end
